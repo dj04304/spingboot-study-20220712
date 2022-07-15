@@ -2,12 +2,10 @@ package com.springboot.studyjunhyeong.web.controller.api.board;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.studyjunhyeong.service.board.BoardService;
-import com.springboot.studyjunhyeong.service.board.BoardServiceImpl;
 import com.springboot.studyjunhyeong.web.dto.board.CreateBoardReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -18,10 +16,10 @@ import lombok.RequiredArgsConstructor;
 public class BoardController {
 	
 	private final BoardService boardService;
-	
+
 	//게시글 작성
 	@PostMapping("/content")
-	public ResponseEntity<?> addBoard(@RequestBody CreateBoardReqDto createBoardReqDto) { //JSON 요청은 @RequestBody를 붙여줘야한다.
+	public ResponseEntity<?> addBoard(CreateBoardReqDto createBoardReqDto) { //변수명이 같으면 생략이 가능하다.
 		boolean responseData = false;
 		try {
 			responseData = boardService.createBoard(createBoardReqDto);
