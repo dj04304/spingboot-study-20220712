@@ -1,5 +1,7 @@
 package com.springboot.studyjunhyeong.web.dto.board;
 
+import com.springboot.studyjunhyeong.domain.board.Board;
+
 import lombok.Data;
 
 /*
@@ -11,4 +13,12 @@ public class CreateBoardReqDto {
 	private String title;
 	private int usercode;
 	private String content;
+	
+	public Board toEntity() {
+		return Board.builder()
+				.title(title)
+				.usercode(usercode)
+				.content(content)
+				.build();
+	}
 }
