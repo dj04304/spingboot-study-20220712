@@ -1,9 +1,9 @@
 package com.springboot.studyjunhyeong.service.board;
 
-import javax.swing.border.Border;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.springboot.studyjunhyeong.domain.board.Board;
 import com.springboot.studyjunhyeong.domain.board.BoardRepository;
@@ -35,8 +35,14 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public ReadBoardRespDto readBoardList(int page) throws Exception {
-		return null;
+	public List<ReadBoardRespDto> readBoardList(int page) throws Exception {
+		List<ReadBoardRespDto> BoardDtoList = new ArrayList<ReadBoardRespDto>(); //비어있는 배열 생성
+		//10개씩 가져옴
+		boardRepository.getBoardListOfIndex((page - 1) * 10).forEach(board -> {
+			BoardDtoList.add(board.toReadBoardDto());
+		}); 
+		
+		return BoardDtoList;
 	}
 	
 

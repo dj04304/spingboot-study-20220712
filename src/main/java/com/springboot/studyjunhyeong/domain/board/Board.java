@@ -33,7 +33,7 @@ public class Board {
 					.build();
 	}
 	
-	public ReadBoardRespDto toReadBoardDto() { //insertStatus는 없기 때문에 매개변수로 받아준다.
+	public ReadBoardRespDto toReadBoardDto() { 
 		return ReadBoardRespDto.builder()
 					.boardcode(boardcode)
 					.title(title)
